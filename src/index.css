@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #f5f5f5;
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+}
+
+#root {
+  min-height: 100vh;
+  background: white;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #FF8400;
+  border-radius: 2px;
+}
+
+/* Safe area padding for mobile */
+.pb-safe {
+  padding-bottom: calc(80px + env(safe-area-inset-bottom));
+}
+
+/* ── Thème Sombre ── */
+[data-theme="sombre"] body {
+  background-color: #0D0B1F !important;
+}
+[data-theme="sombre"] #root {
+  background: #0D0B1F !important;
+}
+
+/* ── Preset Visuel ── */
+[data-preset="visuel"] body,
+[data-preset="visuel"] #root {
+  font-size: 18px !important;
+  letter-spacing: 0.02em;
+}
+[data-preset="visuel"] p,
+[data-preset="visuel"] span,
+[data-preset="visuel"] label {
+  font-size: 1.15em !important;
+  line-height: 1.7 !important;
+}
+[data-preset="visuel"] button {
+  min-height: 52px;
+  font-size: 1.1em !important;
+}
+[data-preset="visuel"] input {
+  font-size: 1.1em !important;
+  min-height: 52px;
+}
+
+/* ── Preset Cognitif ── */
+[data-preset="cognitif"] * {
+  animation: none !important;
+  transition: none !important;
+}
+[data-preset="cognitif"] p,
+[data-preset="cognitif"] span {
+  line-height: 1.8 !important;
+  letter-spacing: 0.03em;
+  word-spacing: 0.1em;
+}
+[data-preset="cognitif"] button {
+  min-height: 56px;
+  font-size: 1.05em !important;
+  border-radius: 16px !important;
+}
+
+/* ── Preset Moteur ── */
+/* Grosse cible tactile sur tous les boutons */
+[data-preset="moteur"] button {
+  min-height: 72px !important;
+  height: auto !important;
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  border-radius: 22px !important;
+  touch-action: manipulation;
+  letter-spacing: 0.01em;
+}
+
+/* Exceptions : petits boutons ronds (QR, icônes) restent carrés mais agrandis */
+[data-preset="moteur"] button.rounded-full {
+  min-height: 56px !important;
+  min-width: 56px !important;
+  padding: 12px !important;
+}
+
+/* Barre de nav du bas : plus haute, icônes plus grandes */
+[data-preset="moteur"] .fixed.bottom-0 {
+  height: 84px !important;
+}
+[data-preset="moteur"] .fixed.bottom-0 button {
+  min-height: 84px !important;
+  height: 84px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+  border-radius: 0 !important;
+  gap: 5px !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+}
+[data-preset="moteur"] .fixed.bottom-0 button span {
+  font-size: 9px !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+}
+[data-preset="moteur"] .fixed.bottom-0 svg {
+  width: 26px !important;
+  height: 26px !important;
+  flex-shrink: 0 !important;
+}
+
+/* Inputs agrandis */
+[data-preset="moteur"] input {
+  min-height: 68px !important;
+  font-size: 1.15rem !important;
+  padding: 18px 18px !important;
+  border-radius: 20px !important;
+}
+
+/* Plus d'espace entre les éléments de liste (pas dans la nav ni les boutons) */
+[data-preset="moteur"] .flex.flex-col:not(.fixed *):not(button) {
+  gap: 14px !important;
+}
+
+/* Texte lisible */
+[data-preset="moteur"] p,
+[data-preset="moteur"] span,
+[data-preset="moteur"] label {
+  font-size: 1.05rem !important;
+  line-height: 1.6 !important;
+}
